@@ -1,0 +1,115 @@
+## INTRODUCTION
+import math ##Imports the specific library that will be used for the calculation of the total cost
+print("")
+print("Welcome to Joe's Clothes!") ##Introduces the user to the store and program
+print("You can buy all types of clothing from here!")
+print("Simply just type your response with the given options!") ##Gives the user instructions of how to work the program
+
+## DEFINITIONS OF LISTS/ALGORITHMS
+CATEGORIES = [" ", "===============CATEGORIES===============", "Headwear", "Tops", "Bottoms", "Footwear", "Checkout", "----------------------------------------"] 
+##Identifies all of the categories that can be purchased from
+HEADWEAR = ["===========HEADWEAR OPTIONS===========", "Cap - $5.55", "Fedora - $20.20", "Beanie - $10.45", "Beret - $30.15", "--------------------------------------"] 
+##Identifies all of the items inside of Headwear that can be purchased
+TOPS = ["===========TOPS OPTIONS===========", "Shirt - $10.10", "Jacket - $27.27", "Hoodie - $35.35", "Tunic - $18.39", "----------------------------------"] 
+##Identifies all of the items inside of Tops that can be purchased
+BOTTOMS = ["===========BOTTOMS OPTIONS===========", "Khakis - $23.23", "Jeans - $25.16", "Leggings - $20.21", "Trousers - $22.22", "-------------------------------------"] 
+##Identifies all of the items inside of Bottoms that can be purchased
+FOOTWEAR = ["===========FOOTWEAR OPTIONS===========", "Heels - $24.24", "Sneakers - $30.33", "Boots - $32.23", "Loafers - $35.53", "-----------------------------------"] 
+##Identifites all of the items inside of Shoes that can be purchased
+CART = [] ##The beginning cart that is used to add items to the user's cart
+CART2 = [] ##The beginning cart that is used to add the monetary values of the items added in CART
+
+CHOICE2 = "name" ##defines what the program has to do once, 
+##the user gives an input of what they would purchase, 
+##and adds the choice to the CART and CART2
+def PRODUCT(name): ##Adds different monetary values to CART2
+##based on the given response of CHOICE2
+  if CHOICE2 == "Cap":
+    CART2.append(5.55)
+  if CHOICE2 == "Fedora":
+    CART2.append(20.20)
+  if CHOICE2 == "Beanie":
+    CART2.append(10.45)
+  if CHOICE2 == "Beret":
+    CART2.append(30.15)
+  if CHOICE2 == "Shirt":
+    CART2.append(10.10)
+  if CHOICE2 == "Jacket":
+    CART2.append(27.27)
+  if CHOICE2 == "Hoodie":
+    CART2.append(35.35)
+  if CHOICE2 == "Tunic":
+    CART2.append(18.39)
+  if CHOICE2 == "Khakis":
+    CART2.append(23.23)
+  if CHOICE2 == "Jeans":
+    CART2.append(25.16)
+  if CHOICE2 == "Leggings":
+    CART2.append(20.21)
+  if CHOICE2 == "Trousers":
+    CART2.append(22.22)
+  if CHOICE2 == "Heels":
+    CART2.append(24.24)
+  if CHOICE2 == "Sneakers":
+    CART2.append(30.33)
+  if CHOICE2 == "Boots":
+    CART2.append(32.23)
+  if CHOICE2 == "Loafers":
+    CART2.append(35.53)
+  CART.append(CHOICE2) ##adds the most recent choice of item to the CART
+  print("Current Items in the Cart:")
+  print(CART)
+
+def TOTAL(ANSWER): ##defines what the program does when asking the user if they would like to donate money, 
+##which is rounding up or continuing on with the program.
+  if ANSWER == "Yes":
+    ROUND = math.ceil(Price)
+    print("We added a free bracelet for rounding up!")
+    CART.append("Bracelet")
+    print("")
+    print("=============CART=============")
+    print("Here are the items in your cart:")
+    print(*CART, sep="\n")
+    print("------------------------------")
+    print("Your total is: $" + str(ROUND))
+  else:
+    print("=============CART=============")
+    print("Here are the items in your cart:")
+    print(*CART, sep="\n")
+    print("------------------------------")
+    print("Your total is: $" + str(Price))
+## END OF DEFINITIONS
+
+##ALGORITHM
+while True: ##continues the program on a loop as the user can add as many 
+##items as they would like into the two carts.
+  print(*CATEGORIES, sep="\n")
+  CHOICE = input("Which category will you choose?")
+  print("")
+  if CHOICE == "Headwear":
+      print(*HEADWEAR, sep="\n")
+      CHOICE2 = input("Choice: ")
+      PRODUCT(CHOICE2)
+  elif CHOICE == "Tops":
+      print(*TOPS, sep="\n")
+      CHOICE2 = input("Choice: ")
+      PRODUCT(CHOICE2)
+  elif CHOICE == "Bottoms":
+      print(*BOTTOMS, sep="\n")
+      CHOICE2 = input("Choice: ")
+      PRODUCT(CHOICE2)
+  elif CHOICE == "Footwear":
+      print(*FOOTWEAR, sep="\n")
+      CHOICE2 = input("Choice: ")
+      PRODUCT(CHOICE2)
+  elif CHOICE == "Checkout":
+      break
+  else:
+      print("That is not a valid option. Please enter a different category.")
+
+print("===========SUBTOTAL===========") ##displays the user's subtotal through the items added in the cart.
+Price = sum(CART2)
+print("Your subtotal is: $" +str(Price))
+ANSWER = input("Would you like to round up to donate to charity?")
+TOTAL(ANSWER)
+print(" - Thank You for Shopping at Joe's Clothes ! -") ##end of program.
